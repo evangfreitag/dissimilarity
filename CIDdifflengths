@@ -1,0 +1,29 @@
+########################################################################################################################
+# Function to calculate the matrix of complexity invariant distances (CID) for a set of vectors with differing lengths #
+########################################################################################################################
+# Make sure that the CID function code has been loaded from CIDfunc.R
+# The input is a list of N vectors with differing lengths
+# i.e. LIST1 <- list(v1, v2, ..., vN)
+
+CIDUnequal <- function(LIST1) {
+	require(dtw)	   # Load the dtw package
+	LIST2 <- list() # Define a list to hold the measurements
+
+		for (n in 1:length(LIST1)) {                                     
+			LIST2[[n]] <- mapply(function(x,y) CID(x,y), LIST1[n], LIST1[seq(1:n)])
+			}
+
+	# Convert the list into a matrix  (this only gives the lower-triangular part)
+	M1 <- matrix(0, length(LIST2), length(LIST2)) # Define a matrix to hold the results
+		
+		for (n in 1:length(LIST2)) {                                                                                                         
+       		C1 <- rep(0, length(LIST2)-length(LIST2[[n]])) # Define appropriate length vector
+     			M1[,n] <- c(LIST2[[n]], C1) # Save result for current n
+			}
+
+	# Since the above only gives the lower triangular part,
+ 	# add M1 to the transpose of M1
+
+	M2 <- M1 + t(M1) # The final output
+		return(M2)
+	}
