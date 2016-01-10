@@ -1,6 +1,6 @@
-################################################################################################
-# Calculates the matrix Dynamic Time Warping (DTW) for a set of vectors with differing lengths #
-################################################################################################
+########################################################################################################################
+# Function to calculate the matrix of dynamic time warping distances (DTW) for a set of vectors with differing lengths #
+########################################################################################################################
 # Make sure that the packge 'dtw' is installed for R on your machine
 # The input is a list of N vectors with differing lengths
 # i.e. LIST1 <- list(v1, v2, ..., vN)
