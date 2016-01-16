@@ -1,7 +1,7 @@
 #############################################################################################
 # Calculate Dynamic Time Warping (DTW) for a set of vectors with possibly differing lengths #
 #############################################################################################
-# Make sure that the R packge 'dtw' is installed 
+# Make sure that the R packge 'dtw' is installed
 # The input is a list of N vectors with possibly differing lengths (i.e. LIST1 <- list(v1, v2, ..., vN))
 # The output is the matrix of all pairwise DTW measurements
 
