@@ -31,12 +31,11 @@ DtwMatrix <-	function(alist) {
 		OuterMatrix[,i] <- InnerVector
 
 		# Print the progress in terms of i
-		print(i)	
-
+		print(i)
 		gc()	
 	}
 	
-	# Unlist the outer list to get the dissimilarity matrix
+	# Get the full dissimilarity matrix
 	DissimilarityMatrix <- OuterMatrix + t(OuterMatrix)
 
 	#Add names to the rows and columns

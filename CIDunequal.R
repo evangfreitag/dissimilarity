@@ -5,29 +5,15 @@
 
 CidMatrix <-	function(alist) {
 	
-	# Define the Complexity Estimate (CE) function
-	ces <- function(x) {
-		M <- length(x)
-		if(M <= 1) {ce2 <- 0}
-		else if(M > 1) {
-			ce1 <- rep(0,M) # Define a vector to hold the results
-			N <- M-1
-			K <- N-1
-			for (n in 1:K){
-				ce1[n] <- (x[n+1]-x[n])^2
-			}
-		ce2 <- sqrt(sum(ce1))
-		}
-	return(ce2)
-	}
-
 	# Define the Complexity Invariant Distance (CID) function
 	cid <- function(x,y) {
-		denom <- min(ces(x), ces(y))
+		cesx <- sqrt(sum(diff(x)^2))
+		cesy <- sqrt(sum(diff(y)^2))
+		denom <- min(cesx, cesy)
 		if(denom == 0){denom <- 1}
-		cid1 <- max(ces(x), ces(y))/denom 
+		cid1 <- max(cesx, cesy)/denom 
 		return(cid1)
-		}
+	}
 
 	# Get the length of the list
 	N <- length(alist)
@@ -55,11 +41,10 @@ CidMatrix <-	function(alist) {
 
 		# Print the progress in terms of i
 		print(i)	
-
 		gc()	
 	}
 	
-	# Unlist the outer list to get the dissimilarity matrix
+	# Get the full dissimilarity matrix
 	DissimilarityMatrix <- OuterMatrix + t(OuterMatrix)
 
 	#Add names to the rows and columns
