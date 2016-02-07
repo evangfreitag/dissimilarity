@@ -1,6 +1,6 @@
-#################################################################################
-# Dynamic Time Warping (DTW) for vectors with differing numbers of observations #
-#################################################################################
+##########################################################################################
+# Dynamic Time Warping (DTW) for a set of vectors with differing numbers of observations #
+##########################################################################################
 # Input a list of vectors
 
 DtwMatrix <-	function(alist) {
@@ -29,10 +29,6 @@ DtwMatrix <-	function(alist) {
 
 		# Save the output from the inner part of the nested loop
 		OuterMatrix[,i] <- InnerVector
-
-		# Print the progress in terms of i
-		print(i)
-		gc()	
 	}
 	
 	# Get the full dissimilarity matrix

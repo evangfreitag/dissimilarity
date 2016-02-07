@@ -1,6 +1,6 @@
-##########################################################################################
-# Complexity Invariant Distance (CID) for vectors with differing numbers of observations #
-##########################################################################################
+###################################################################################################
+# Complexity Invariant Distance (CID) for a set of vectors with differing numbers of observations #
+###################################################################################################
 # Input a list of vectors
 
 CidMatrix <-	function(alist) {
@@ -10,8 +10,8 @@ CidMatrix <-	function(alist) {
 		cesx <- sqrt(sum(diff(x)^2))
 		cesy <- sqrt(sum(diff(y)^2))
 		denom <- min(cesx, cesy)
-		if(denom == 0){denom <- 1}
-		cid1 <- max(cesx, cesy)/denom 
+		if(denom == 0) {stop("Cannot divide by zero: A series exists that has complexity zero.")}
+		else if(denom > 0){cid1 <- max(cesx, cesy)/denom 
 		return(cid1)
 	}
 
