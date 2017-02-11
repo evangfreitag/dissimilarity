@@ -40,3 +40,20 @@ DtwMatrix <-	function(alist) {
 
 	return(DissimilarityMatrix)
 }
+
+# Generate Time Series Data
+set.seed(42);
+randomTS <- function(n,f){
+	u=sort(runif(n)*2*pi)
+	c=runif(1)
+	y=c*f(u)+rnorm(n)/4
+	df=data.frame(x=u,y=y)
+	plot(df, type = "l")
+}
+
+N <- 50
+TsList <- list()
+for(i in 1:N){
+	if(round(runif(1)) == 0){TsList[[i]] <- randomTS(1000,sin)}
+	if(round(runif(1)) == 1){TsList[[i]] <- randomTS(1000,cos)}
+}
